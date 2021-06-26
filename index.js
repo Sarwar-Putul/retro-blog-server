@@ -95,6 +95,14 @@ client.connect(err => {
     })
   })
 
+  app.post('/isAdmin', (req, res) => {
+    const email = req.body.email;
+    adminCollection.find({email: email})
+      .toArray((err, admin) => {
+        res.send(admin.length > 0);
+      })
+  })
+
 
 
 
